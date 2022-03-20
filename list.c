@@ -120,8 +120,35 @@ void * lastList(List * list)
   }
 }
 
-void * prevList(List * list) {
-    return NULL;
+void * prevList(List * list) 
+{
+  void * datoLocal = NULL;
+  
+  if(list == NULL)
+  {
+    return datoLocal;
+  }
+  else
+  {
+    if(list->current == NULL)
+    {
+      return datoLocal;
+    }
+    else
+    {
+      if(list->current == list->head)
+      {
+        return datoLocal;
+      }
+      else
+      {
+        datoLocal = list->current->next->data;
+        list->current = list->current->prev;
+
+        return datoLocal;
+      }
+    }
+  }
 }
 
 void pushFront(List * list, void * data) {
