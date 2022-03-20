@@ -28,19 +28,76 @@ Node * createNode(void * data) {
     return new;
 }
 
-List * createList() {
-     return NULL;
+List * createList() 
+{
+  List *listaLocal = (List *) malloc(sizeof(List));
+  if(listaLocal == NULL) EXIT_FAILURE; 
+
+  listaLocal->head = NULL;
+
+  listaLocal->tail = NULL;
+
+  listaLocal->current = NULL;
+
+  return listaLocal;
 }
 
-void * firstList(List * list) {
-    return NULL;
+void * firstList(List * list) 
+{
+  void * datoLocal = NULL;
+  
+  if(list == NULL)
+  {
+    return datoLocal;
+  }
+  else
+  {
+    if(list->head == NULL)
+    {
+      return datoLocal;
+    }
+    else
+    {
+      datoLocal = list->head->data;
+
+      return datoLocal;
+    }
+  }
 }
 
-void * nextList(List * list) {
-    return NULL;
+void * nextList(List * list) 
+{
+  void * datoLocal = NULL;
+  
+  if(list == NULL)
+  {
+    return datoLocal;
+  }
+  else
+  {
+    if(list->current == NULL)
+    {
+      return datoLocal;
+    }
+    else
+    {
+      if(list->current == list->tail)
+      {
+        return datoLocal;
+      }
+      else
+      {
+        datoLocal = list->current->next->data;
+        list->current = list->current->next;
+
+        return datoLocal;
+      }
+    }
+  }
 }
 
-void * lastList(List * list) {
+void * lastList(List * list) 
+{
     return NULL;
 }
 

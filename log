@@ -1,0 +1,6 @@
+Sun Mar 20 22:58:57 UTC 2022: 
+ list.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 64 insertions(+), 7 deletions(-)
+ tests:  5|4
+total_score: 25/70
+8568e81
