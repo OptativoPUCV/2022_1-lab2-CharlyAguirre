@@ -98,7 +98,26 @@ void * nextList(List * list)
 
 void * lastList(List * list) 
 {
-    return NULL;
+  void * datoLocal = NULL;
+
+  if(list == NULL)
+  {
+    return datoLocal;
+  }
+  else
+  {
+    if(list->tail == NULL)
+    {
+      return datoLocal;
+    }
+    else
+    {
+      list->current = list->tail;
+      datoLocal = list->tail->data;
+  
+      return datoLocal;
+    }
+  }
 }
 
 void * prevList(List * list) {
