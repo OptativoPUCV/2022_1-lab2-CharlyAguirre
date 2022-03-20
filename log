@@ -21,3 +21,9 @@ Sun Mar 20 23:00:06 UTC 2022:
  tests:  6|4
 total_score: 25/70
 4f171fd
+Sun Mar 20 23:01:46 UTC 2022: 
+ list.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+ tests:  9|3
+total_score: 35/70
+7cb8204
