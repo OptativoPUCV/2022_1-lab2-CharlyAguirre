@@ -157,10 +157,14 @@ void pushFront(List * list, void * data)
 
   if(list != NULL)
   {
-    if(list->head != NULL)
+    if(list->head == NULL)
+    {
+      list->head = nodeHead;
+    }
+    else
     {
       list->head->prev = nodeHead;
-            
+
       nodeHead->next = list->head;
 
       list->head = nodeHead;
@@ -168,27 +172,34 @@ void pushFront(List * list, void * data)
   }
 }
 
-void pushBack(List * list, void * data) {
+void pushBack(List * list, void * data) 
+{
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, void * data) {
+void pushCurrent(List * list, void * data) 
+{
 }
 
-void * popFront(List * list) {
+void * popFront(List * list) 
+{
     list->current = list->head;
     return popCurrent(list);
 }
 
-void * popBack(List * list) {
+void * popBack(List * list) 
+{
     list->current = list->tail;
     return popCurrent(list);
 }
 
 void * popCurrent(List * list) 
 {
-    return NULL;
+  
+  
+  
+  return NULL;
 }
 
 void cleanList(List * list) {
