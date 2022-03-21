@@ -88,6 +88,7 @@ void * nextList(List * list)
       else
       {
         datoLocal = list->current->next->data;
+        
         list->current = list->current->next;
 
         return datoLocal;
@@ -113,6 +114,7 @@ void * lastList(List * list)
     else
     {
       list->current = list->tail;
+      
       datoLocal = list->tail->data;
   
       return datoLocal;
@@ -143,6 +145,7 @@ void * prevList(List * list)
       else
       {
         datoLocal = list->current->prev->data;
+        
         list->current = list->current->prev;
 
         return datoLocal;
@@ -160,6 +163,7 @@ void pushFront(List * list, void * data)
     if(list->head == NULL)
     {
       list->head = nodeHead;
+      
       list->tail = nodeHead;
     }
     else
@@ -188,7 +192,9 @@ void pushCurrent(List * list, void * data)
     if(list->head == NULL)
     {
       list->head = nodeAdd;
+      
       list->current = nodeAdd;
+      
       list->tail = nodeAdd;
     }
     else
@@ -196,16 +202,23 @@ void pushCurrent(List * list, void * data)
       if(list->current->next == NULL)
       {
         list->current->next = nodeAdd;
+        
         nodeAdd->prev = list->current;
+        
         list->current = nodeAdd;
+        
         list->tail = nodeAdd;
       }
       else
       {
         list->current->next->prev = nodeAdd;
+        
         nodeAdd->next = list->current->next;
+        
         nodeAdd->prev = list->current;
+        
         list->current->next = nodeAdd;
+        
         list->current = nodeAdd;
       }
     }
@@ -226,10 +239,64 @@ void * popBack(List * list)
 
 void * popCurrent(List * list) 
 {
-  
-  
-  
-  return NULL;
+  void * aux = NULL;
+
+  if(list != NULL)
+  {
+    if(list->head != NULL)
+    {
+      if(list->head == list->current)
+      {
+        aux = list->current;
+
+        list->head = list->head->next;
+
+        list->current = list->head;
+        
+        free(list->head->prev);
+
+        list->head->prev = NULL;
+
+        return aux->data;
+      }
+      else
+      {
+        if(list->tail == list->current)
+        {
+          aux = list->current->data;
+
+          list->tail = list->tail->prev;
+
+          list->current = list->tail;
+
+          free(list->tail->next);
+
+          list->tail->next = NULL;
+          
+          return aux;
+        }
+        else
+        {
+          Node * nodeAux = (Node *)malloc(sizeof(Node));
+
+          nodeAux = list->current;
+          
+          aux = list->current->data;
+
+          list->current->prev->next = list->current->next;
+
+          list->current = list->current->next;
+
+          list->current->prev = nodeAux->prev;
+
+          free(nodeAux);
+
+          return aux;
+        }
+      }
+    }
+  }
+  return aux;
 }
 
 void cleanList(List * list) {
