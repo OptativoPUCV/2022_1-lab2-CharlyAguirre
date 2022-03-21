@@ -257,7 +257,7 @@ void * popCurrent(List * list)
 
         list->head->prev = NULL;
 
-        return aux->data;
+        return aux;
       }
       else
       {
